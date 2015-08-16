@@ -33,7 +33,6 @@
 		1A77780D1B79CE7100077031 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7778021B79CE7100077031 /* AFURLRequestSerialization.m */; };
 		1A77780E1B79CE7100077031 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7778041B79CE7100077031 /* AFURLResponseSerialization.m */; };
 		1A77780F1B79CE7100077031 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7778061B79CE7100077031 /* AFURLSessionManager.m */; };
-		1A7778121B79CEEA00077031 /* NSString+URL.m in Sources */ = {isa = PBXBuildFile; fileRef = 1A7778111B79CEEA00077031 /* NSString+URL.m */; };
 		1AC21D611B7DE5A800A7C0D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1AC21D601B7DE5A800A7C0D5 /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
@@ -91,8 +90,6 @@
 		1A7778041B79CE7100077031 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		1A7778051B79CE7100077031 /* AFURLSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFURLSessionManager.h; sourceTree = "<group>"; };
 		1A7778061B79CE7100077031 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFURLSessionManager.m; sourceTree = "<group>"; };
-		1A7778101B79CEEA00077031 /* NSString+URL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URL.h"; sourceTree = "<group>"; };
-		1A7778111B79CEEA00077031 /* NSString+URL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URL.m"; sourceTree = "<group>"; };
 		1AC21D601B7DE5A800A7C0D5 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,8 +154,6 @@
 				1A7777F31B79CE7100077031 /* AFNetworking */,
 				1A7777B41B79C8C500077031 /* AppDelegate.h */,
 				1A7777B51B79C8C500077031 /* AppDelegate.m */,
-				1A7778101B79CEEA00077031 /* NSString+URL.h */,
-				1A7778111B79CEEA00077031 /* NSString+URL.m */,
 				1A7777F01B79CC6000077031 /* ViewController.h */,
 				1A7777F11B79CC6000077031 /* ViewController.m */,
 				1A7777BD1B79C8C600077031 /* Images.xcassets */,
@@ -326,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1A7778121B79CEEA00077031 /* NSString+URL.m in Sources */,
 				1A7778071B79CE7100077031 /* AFHTTPRequestOperation.m in Sources */,
 				1A7777F21B79CC6000077031 /* ViewController.m in Sources */,
 				1A7778081B79CE7100077031 /* AFHTTPRequestOperationManager.m in Sources */,

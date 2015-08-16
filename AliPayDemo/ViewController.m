@@ -10,7 +10,6 @@
 
 #import <AlipaySDK/AlipaySDK.h>
 #import "AFNetworking.h"
-#import "NSString+URL.h"
 
 @interface ViewController () <UIActionSheetDelegate>
 
