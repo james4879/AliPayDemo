@@ -154,7 +154,7 @@
  subject="套餐"&
  body="每月10条短信10条咨询"&
  total_fee="0.01"&
- notify_url="http://console.ifoodsoso.com/index.php/Mobile/MobilePay/PayNotify"&
+ notify_url="自己服务器接口地址"&
  service="mobile.securitypay.pay"&
  payment_type="1"&
  _input_charset="utf-8"&
@@ -177,7 +177,7 @@
      subject=\"\U5957\U9910\"&
      body=\"\U6bcf\U670810\U6761\U77ed\U4fe110\U6761\U54a8\U8be2\"&
      total_fee=\"0.01\"&
-     notify_url=\"http://console.ifoodsoso.com/index.php/Mobile/MobilePay/PayNotify\"&
+     notify_url=\"自己服务器接口地址"&
      service=\"mobile.securitypay.pay\"&
      payment_type=\"1\"&
      _input_charset=\"utf-8\"&
