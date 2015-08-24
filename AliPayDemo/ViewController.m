@@ -67,7 +67,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager POST:@"自己服务器接口地址" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"自己服务器的接口地址" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:0 error:nil];
         
@@ -143,51 +143,5 @@
                                           otherButtonTitles:nil, nil];
     [alert show];
 }
-
-#pragma mark - 服务器返回
-
-/**
- 
- partner="2088712821697234"&
- seller_id="kairu_tech@163.com"&
- out_trade_no="15081115332728197593"&
- subject="套餐"&
- body="每月10条短信10条咨询"&
- total_fee="0.01"&
- notify_url="自己服务器接口地址"&
- service="mobile.securitypay.pay"&
- payment_type="1"&
- _input_charset="utf-8"&
- it_b_pay="30m"&
- show_url="console.ifoodsoso.com/index.php/Mobile/MobilePay"&
- sign="15KylzOofN9PaxCiaKsqurhbLrsaPkdqiLIDnI7kN9pewS9bSaYS07gvPnSKvxiK/pfbeEJJlYh0s1A0RdrIyZKhuxK38BQz3pLuXdRmbBQtvb/2GJL+LKeKm1FlsznoD7o1OBIrqgCYwPJ6r+J42x5rJpThoPwAiJUO/69mfVM="&
- sign_type="RSA"
-
- */
-
-#pragma mark - 支付宝返回
-
-/** 
- {
- memo = "";
- result = "
-     partner=\"2088712821697234\"&
-     seller_id=\"kairu_tech@163.com\"&
-     out_trade_no=\"15081216072577750307\"&
-     subject=\"\U5957\U9910\"&
-     body=\"\U6bcf\U670810\U6761\U77ed\U4fe110\U6761\U54a8\U8be2\"&
-     total_fee=\"0.01\"&
-     notify_url=\"自己服务器接口地址"&
-     service=\"mobile.securitypay.pay\"&
-     payment_type=\"1\"&
-     _input_charset=\"utf-8\"&
-     it_b_pay=\"30m\"&
-     success=\"true\"&
-     sign_type=\"RSA\"&
-     sign=\"BssJOLmyEKpOq5dLZlxVohfILXStTZ+N40422YBFZwcrs0hSVIjSvl9vx1Lupy6zys2KZmYDTlroDEH9sDxR/ZsoVomuVBrofV2tszOeMKBQAmpoSyZDSO0YmgmU6YUDBHwwwcnJBMSJSTawHZ47c5a24AXjrwLcmjeadG8ghtg=\"
- ";
-     resultStatus = 9000;
- }
- */
 
 @end
