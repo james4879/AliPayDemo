@@ -13,6 +13,10 @@
 
 @interface ViewController () <UIActionSheetDelegate>
 
+@property (nonatomic, weak) UIButton *btn;
+
+@property (nonatomic, weak) UITextField *textField;
+
 @end
 
 @implementation ViewController
@@ -21,10 +25,39 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    UITextField *txt = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - 50, self.view.frame.size.height * 0.5 - 150, 100, 30)];
+    txt.backgroundColor = [UIColor lightGrayColor];
+    txt.borderStyle = UITextBorderStyleRoundedRect;
+    txt.keyboardType = UIKeyboardTypeNumberPad;
+    [txt addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.view addSubview:txt];
+    self.textField = txt;
+    
+    UILabel *label = [[UILabel alloc] init];
+    label.text = @"支付金额:";
+    label.frame = CGRectMake(CGRectGetMinX(self.textField.frame) - 80, self.view.frame.size.height * 0.5 - 150, 100, 30);
+    [self.view addSubview:label];
+    
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(self.view.frame.size.width * 0.5 - 25, self.view.frame.size.height * 0.5 - 25, 50, 50);
+    [btn setBackgroundColor:[UIColor redColor]];
+    [btn setTitle:@"支付" forState: UIControlStateNormal];
+    btn.layer.cornerRadius = 25;
+    btn.layer.masksToBounds = YES;
     [btn addTarget:self action:@selector(alertView) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:btn];
+    self.btn = btn;
+}
+
+-(void)textFieldDidChange:(id)sender
+{
+    NSLog(@"%@", self.textField.text);
+
+    if ([self.textField.text isEqualToString:@""]) {
+        [self.btn setBackgroundColor:[UIColor redColor]];
+    } else {
+        [self.btn setBackgroundColor:[UIColor greenColor]];
+    }
 }
 
 #pragma mark - UIActionSheet Delegate
@@ -43,7 +76,7 @@
  */
 - (void)alertView
 {
-    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"确认支付 %.2f 元", 0.01] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"支付" otherButtonTitles:nil, nil];
+    UIActionSheet *action = [[UIActionSheet alloc] initWithTitle:[NSString stringWithFormat:@"确认支付 %@ 元", self.textField.text] delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"支付" otherButtonTitles:nil, nil];
     [action showInView:self.view];
 }
 
@@ -56,7 +89,7 @@
                                  @"paylist_id":@"1",
                                  @"buyer_id":@"1",
                                  @"buyer_name":@"james",
-                                 @"goods_amount":@"0.01",
+                                 @"goods_amount":self.textField.text,
                                  @"type":@"json"};
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
@@ -67,7 +100,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager POST:@"自己服务器的接口地址" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"http://console.ifoodsoso.com/index.php/Mobile/MobilePay/Pay" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:0 error:nil];
         
@@ -105,6 +138,7 @@
                 if ([result isEqualToString:@"true"]) {
                     NSLog(@"订单支付成功");
                     [self enterAlertView:@"支付成功"];
+                    [self textFieldDidChange:self.textField];
                     return;
                 }
                 
