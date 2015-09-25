@@ -28,7 +28,7 @@
     UITextField *txt = [[UITextField alloc] initWithFrame:CGRectMake(self.view.frame.size.width * 0.5 - 50, self.view.frame.size.height * 0.5 - 150, 100, 30)];
     txt.backgroundColor = [UIColor lightGrayColor];
     txt.borderStyle = UITextBorderStyleRoundedRect;
-    txt.keyboardType = UIKeyboardTypeNumberPad;
+    txt.keyboardType = UIKeyboardTypeNumbersAndPunctuation;
     [txt addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.view addSubview:txt];
     self.textField = txt;
@@ -100,7 +100,7 @@
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     
-    [manager POST:@"http://console.ifoodsoso.com/index.php/Mobile/MobilePay/Pay" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [manager POST:@"接口地址" parameters:parameters success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:(NSData *)responseObject options:0 error:nil];
         
@@ -145,12 +145,15 @@
             } else if ([resultStatus isEqualToString:@"8000"]) {
                 NSLog(@"正在处理中");
                 [self enterAlertView:@"支付处理中"];
+                
             } else if ([resultStatus isEqualToString:@"4000"]) {
                 NSLog(@"订单支付失败");
                 [self enterAlertView:@"订单支付失败"];
+                
             } else if ([resultStatus isEqualToString:@"6001"]) {
                 NSLog(@"用户中途取消");
                 [self enterAlertView:@"用户取消"];
+                
             } else if ([resultStatus isEqualToString:@"6002"]) {
                 NSLog(@"网络连接出错");
                 [self enterAlertView:@"网络连接出错"];
